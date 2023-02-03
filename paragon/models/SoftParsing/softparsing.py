@@ -1,9 +1,9 @@
-from paragon.SoftParsing.gnn import MPNN, MPNN_e
+from paragon.models.SoftParsing.gnn import MPNN, MPNN_e
 import torch
 import torch.nn as nn
 from paragon.utils.lang_utils import DEP_REL_DICT, POS_DICT_
-from paragon.SoftParsing.dep_tree import dep_tree_parser, extract_dep_edge_info
-from paragon.SoftParsing.slot_attention import SlotAttention
+from paragon.models.SoftParsing.dep_tree import dep_tree_parser, extract_dep_edge_info
+from paragon.models.SoftParsing.slot_attention import SlotAttention
 import clip
 import math
 

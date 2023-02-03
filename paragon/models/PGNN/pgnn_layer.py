@@ -4,7 +4,6 @@ from paragon.models.PGNN.deepset import ObservationFusion, ObservationFusionWeig
 from torch import Tensor, LongTensor
 from typing import Callable, Tuple, List
 from paragon.utils.grounding_utils import find_edge_index_by_head, find_edge_index_by_tail
-from paragon.models.grounding.node import MPNN_node
 from torch_scatter import scatter
 
 class PGNN_Layer_Base(nn.Module):

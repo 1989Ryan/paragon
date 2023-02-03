@@ -1,1 +1,1 @@
-from visual_model import *
+from paragon.models.VisualGrounding.visual_model import *

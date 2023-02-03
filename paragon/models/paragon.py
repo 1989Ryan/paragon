@@ -7,14 +7,10 @@ from torch import Tensor
 from torchvision import transforms
 from torchvision.transforms import InterpolationMode
 from torchvision.transforms import Normalize, Resize
-# real 
-from paragon.models.PGNN import PMFGNN_CNN_RS_RP, PMFGNN_CNN_Fusion
 from paragon.models.paragon_base import ParaGonClipBase
 from paragon.models.PGNN.pgnn import PGNN
 from paragon.models.SoftParsing.softparsing import SoftParsing, gnn_par_attn
 from paragon.models.VisualGrounding import Visual_Object_Grounding
-from paragon.models.SoftParsing import gnn_par_attn_pos_embd, gnn_par_attn_pos_embd2
-from paragon.models.SoftParsing import gnn_par_linear_pos_embd
 from paragon.models.SoftParsing.dep_tree import dep_tree_parser, extract_dep_edge_info
 from paragon.utils.grounding_utils import bboxes_to_pos_matrix, from_bboxes_to_image, from_bboxes_to_image_cliport, bboxes_to_coord
 
