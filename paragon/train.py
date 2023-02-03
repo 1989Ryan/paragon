@@ -3,13 +3,15 @@ import torch
 from paragon.models.paragon import ParaGon
 from paragon.utils.grounding_utils import contrastive_loss_fn, loss_fn, get_bboxes_from_mask_torch, loss_fn_tar, loss_fn_tar_cross_entropy
 from paragon.tabletop_dataset import tabletop_gym_obj_dataset
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 import os
+import wandb
 
 @hydra.main(config_path="./cfg", config_name='train')
 def main(cfg):
     device = torch.device(cfg['model']['device']) if torch.cuda.is_available() else torch.device('cpu')
-    from torch.utils.tensorboard import SummaryWriter
+    # from torch.utils.tensorboard import SummaryWriter
+    wandb.init(project="ParaGon_train_n{}".format(cfg['dataset']['data_num']))
     model = ParaGon(
             aggr=cfg['model']['aggr'],
             word_embd_dim=cfg['model']['word_embd_dim'],
@@ -44,8 +46,8 @@ def main(cfg):
         lr_scheduler_2 = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[50,100,150], gamma=0.4)
     else:
         lr_scheduler_2 = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15,30,45], gamma=0.4)
-    writer1 = SummaryWriter('tensorboard/target')
-    writer2 = SummaryWriter('tensorboard/placement')
+    # writer1 = SummaryWriter('tensorboard/target')
+    # writer2 = SummaryWriter('tensorboard/placement')
     epoch_num = cfg['train']['epoch_num']
     model.train()
     counter = 0
@@ -53,6 +55,7 @@ def main(cfg):
     ave_tar_loss = 0.0
     total_loss = []
     total_num = 0
+    step_counter = 0
     for epoch in range(epoch_num):
         for data in data_loader:
             for cc in range(2):
@@ -94,13 +97,10 @@ def main(cfg):
                 total_loss.append(loss.detach())
             counter += 1
             if counter % 100 == 99:
-                writer1.add_scalar("ParaGon {} data".format(
-                        cfg['dataset']['data_num']), 
-                        ave_tar_loss/200, epoch * cfg['dataset']['data_num'] * 3 + 
-                        (counter-99) * cfg['train']['batch_size'])
-                writer2.add_scalar("ParaGon {} data".format(
-                        cfg['dataset']['data_num']), 
-                        ave_tar_loss/200, epoch * cfg['dataset']['data_num'] * 3 + 
+                wandb.log({
+                    'ave_dis_loss': ave_dis_loss/200, 
+                    'ave_tar_loss': ave_tar_loss/200},
+                    step= epoch * cfg['dataset']['data_num'] * 3 + 
                         (counter-99) * cfg['train']['batch_size'])
                 ave_dis_loss = 0
                 ave_tar_loss = 0
@@ -131,8 +131,8 @@ def main(cfg):
         if not os.path.isdir(dir): 
             os.mkdir(dir)
         torch.save(model.state_dict(), dir + '/last.pt')
-    writer1.close()
-    writer2.close()
+    # writer1.close()
+    # writer2.close()
 
 
 if __name__=='__main__':
