@@ -151,3 +151,4 @@ ravens/
 model/stanford_parser/
 *.ipynb
 *.pt
+exps/
