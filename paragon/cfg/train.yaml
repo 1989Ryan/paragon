@@ -9,7 +9,7 @@ hydra:
 
 dataset:
   type: 'single' # 'single' or 'multi'
-  data_num: 1000
+  data_num: 8000
   batch_size: 1
   images: True
   cache: True # load episodes to memory instead of reading from disk
@@ -48,7 +48,7 @@ train:
   log: False # log metrics and stats to wandb
   n_val: 10
   val_repeats: 1
-  epoch_num : 100
+  epoch_num : 15
   save_steps: [1000, 2000, 3000, 4000, 5000, 7000, 10000, 20000, 40000, 80000, 120000, 160000, 200000, 300000, 400000, 500000, 600000, 800000, 1000000, 1200000]
   load_from_last_ckpt: False
 
@@ -56,7 +56,7 @@ model:
   aggr: sum
   word_embd_dim: 512
   embd_dim: 128
-  layer_num: 16
+  layer_num: 8
   particle_num: 100
   resamp_alpha: 0.5
   position_size: 640

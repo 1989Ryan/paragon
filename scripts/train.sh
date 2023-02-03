@@ -1,2 +1,2 @@
 export PYTHONPATH="$PWD"
-nohup python paragon/train.py > logs/train_raven.log 2>&1 &
+nohup python paragon/train.py > logs/train.log 2>&1 &

@@ -98,8 +98,8 @@ def main(cfg):
             counter += 1
             if counter % 100 == 99:
                 wandb.log({
-                    'ave_dis_loss': ave_dis_loss/200, 
-                    'ave_tar_loss': ave_tar_loss/200},
+                    'ave_dis_loss': ave_dis_loss.cpu().numpy()/200, 
+                    'ave_tar_loss': ave_tar_loss.cpu().numpy()/200},
                     step= epoch * cfg['dataset']['data_num'] * 3 + 
                         (counter-99) * cfg['train']['batch_size'])
                 ave_dis_loss = 0
@@ -116,20 +116,20 @@ def main(cfg):
         if cfg['dataset']['data_num'] <= 200:
             if epoch in [80, 160, 240, 270, 300]:
                 if not os.path.isdir(dir): 
-                    os.mkdir(dir)
+                    os.makedirs(dir)
                 torch.save(model.state_dict(), dir + '/{}_epoch.pt'.format(epoch))
         elif cfg['dataset']['data_num'] < 2000:
             if epoch in [30, 60, 75, 90, 100, 110]:
                 if not os.path.isdir(dir): 
-                    os.mkdir(dir)
+                    os.makedirs(dir)
                 torch.save(model.state_dict(), dir + '/{}_epoch.pt'.format(epoch))
         else:
             if epoch in [4, 8, 10, 12, 14, 15]:
                 if not os.path.isdir(dir): 
-                    os.mkdir(dir)
+                    os.makedirs(dir)
                 torch.save(model.state_dict(), dir + '/{}_epoch.pt'.format(epoch))
         if not os.path.isdir(dir): 
-            os.mkdir(dir)
+            os.makedirs(dir)
         torch.save(model.state_dict(), dir + '/last.pt')
     # writer1.close()
     # writer2.close()
