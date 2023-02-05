@@ -9,7 +9,7 @@ from collections import defaultdict, deque
 import numpy as np
 from torch import nn
 from torch.nn import functional as F
-from paragon.object_detector.space.model.space.utils import spatial_transform
+from object_detector.space.model.space.utils import spatial_transform
 
 class Checkpointer:
     def __init__(self, checkpointdir, max_num):

@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import torch
-from paragon.paraground.utils.grounding_utils import read_json
+from paragon.utils.grounding_utils import read_json
 from typing import Dict
 
 

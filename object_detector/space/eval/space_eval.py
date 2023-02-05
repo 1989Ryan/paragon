@@ -1,4 +1,4 @@
-from paragon.object_detector.space.utils import MetricLogger
+from object_detector.space.utils import MetricLogger
 import numpy as np
 import torch
 import math

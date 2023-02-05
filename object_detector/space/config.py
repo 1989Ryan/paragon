@@ -89,8 +89,8 @@ cfg = CfgNode({
     }
 })
 
-from paragon.object_detector.space.model.space.arch import arch
-from paragon.object_detector.space.eval.eval_cfg import eval_cfg
+from object_detector.space.model.space.arch import arch
+from object_detector.space.eval.eval_cfg import eval_cfg
 
 # For these two, please go to the correponding file
 cfg.arch = arch
