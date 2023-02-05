@@ -28,7 +28,7 @@ if __name__=="__main__":
 
     parser.add_argument("-r", "--root", action='store_true', help="(optional) login as root instead of user")
 
-    parser.add_argument("-g", "--gpus", type=str, default="all", help="(optional) gpus for nvidia docker")
+    parser.add_argument("-g", "--gpus", type=str, default='all', help="(optional) gpus for nvidia docker")
 
     parser.add_argument("-dr", "--dry_run", action='store_true', help="(optional) perform a dry_run, print the command that would have been executed but don't execute it.")
 

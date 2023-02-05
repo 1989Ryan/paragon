@@ -39,8 +39,8 @@ RUN sudo python3 -m pip install --upgrade pip
 
 # install pytorch
 RUN sudo pip3 install \
-   torch==1.9.1+cu111 \
-   torchvision==0.10.1+cu111 \
+   torch==1.10.2+cu113 \
+   torchvision==0.11.3+cu113 \
    -f https://download.pytorch.org/whl/torch_stable.html
 
 # install GLX-Gears (for debugging)
@@ -50,13 +50,14 @@ RUN apt-get update && apt-get install -y \
    && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade setuptools wheel
+RUN sudo apt-get install build-essential
 
+RUN sudo pip3 install git+https://github.com/openai/CLIP.git
 RUN sudo pip3 install \
    absl-py>=0.7.0  \
    gym==0.17.3 \
    pybullet>=3.0.4 \
    matplotlib>=3.1.1 \
-   opencv-python>=4.1.2.30 \
    scipy==1.4.1 \
    scikit-image==0.17.2 \
    transforms3d==0.3.1 \
@@ -68,10 +69,16 @@ RUN sudo pip3 install \
    ftfy \
    regex \
    timm\
-   ffmpeg 
-RUN sudo pip3 install git+https://github.com/openai/CLIP.git
-
+   ffmpeg \
+   opencv-python==4.1.2.30 
+RUN sudo pip3 install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.10.2+cu113.html
+RUN sudo pip3 install torch-geometric
+# RUN sudo pip3 install torch_geometric
+# RUN sudo apt-get install  libpython3-dev
+# RUN sudo pip3 install torch_scatter==2.0.9
+RUN pip3 install -U spacy
+RUN python3 -m spacy download en_core_web_trf
 
 # change ownership of everything to our user
-RUN mkdir -r /home/$USER_NAME/paragon
+RUN mkdir /home/$USER_NAME/paragon
 RUN cd /home/$USER_NAME/paragon && echo $(pwd) && chown $USER_NAME:$USER_NAME -R .
