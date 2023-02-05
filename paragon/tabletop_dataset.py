@@ -22,26 +22,6 @@ def read_json(filepath):
         raise IOError("%s: %s" % (filepath, exc.strerror))
     return data
 
-def generate_relations():
-    pass
-
-def sample_target_object():
-    pass
-
-def generate_placement(target_bbox, context_bbox, relation_code):
-     
-    pass
-
-def sample_instruction_and_placement(bboxes):
-    '''
-    return the instructions and corresponding placement
-    Args:
-        bboxes
-    Returns:
-        instruction, placement
-    '''
-    pass
-
 def listdir_fullpath(d):
     return [os.path.join(d, f) for f in os.listdir(d)]
 
@@ -53,13 +33,12 @@ class tabletop_gym_obj_dataset(torch.utils.data.Dataset):
         # load all image files, sorting them to
         # ensure that they are aligned
         if not test:
-            list_dir_1 = listdir_fullpath('/home/zirui/paraground/dataset/train_4_obj_nvisii') 
-            list_dir_2 = listdir_fullpath('/home/zirui/paraground/dataset/train_10_obj_nvisii')
-            list_dir_3 = listdir_fullpath('/home/zirui/paraground/dataset/train_11_obj_nvisii')
+            list_dir_1 = listdir_fullpath(root + '/train_4_obj_nvisii') 
+            list_dir_2 = listdir_fullpath(root + '/train_10_obj_nvisii')
+            list_dir_3 = listdir_fullpath(root + '/train_11_obj_nvisii')
         else:
             list_dir = listdir_fullpath(root) 
         self.test = test
-        self.id_to_name = read_json('/home/zirui/tabletop_gym/tabletop_gym/envs/config/id2labelBB.json')
         if num is not None:
             self.paths = random.sample(list_dir_1, int(num)) \
                 + random.sample(list_dir_2, int(num)) \

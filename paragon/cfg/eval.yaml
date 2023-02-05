@@ -1,0 +1,66 @@
+# Training
+
+defaults:
+  - config
+
+hydra:
+  run:
+    dir: ${train.train_dir}
+
+dataset:
+  type: 'single' # 'single' or 'multi'
+  data_num: 8000
+  batch_size: 1
+  images: True
+  comp: False
+  cache: True # load episodes to memory instead of reading from disk
+  augment:
+    theta_sigma: 60 # rotation sigma in degrees; N(mu = 0, sigma = theta_sigma).
+
+train:
+  # folders
+  exp_folder: exps
+  train_dir: ${root_dir}/${train.exp_folder}/${train.task}-${train.agent}-n${dataset.data_num}-train
+  data_dir: ${root_dir}/dataset
+
+  # task configs
+  task: tabletop_placing 
+  agent: pag_rnn_rs_rp
+  n_steps: 201000 # use 601000 for multi-task models
+
+  # hyper params
+  n_rotations: 36
+  batchnorm: False # important: False because batch_size=1
+  batch_size: 1 
+  lr: 1e-4
+
+  min_lr : 1e-5
+  threshold: 1e-3
+  verbose: True 
+  factor: 0.5
+  patience: 5
+
+  attn_stream_fusion_type: 'add'
+  trans_stream_fusion_type: 'conv'
+  lang_fusion_type: 'mult'
+
+  # script configs
+  gpu: [1] # -1 for all
+  log: False # log metrics and stats to wandb
+  n_val: 10
+  val_repeats: 1
+  epoch_num : 15
+  save_steps: [1000, 2000, 3000, 4000, 5000, 7000, 10000, 20000, 40000, 80000, 120000, 160000, 200000, 300000, 400000, 500000, 600000, 800000, 1000000, 1200000]
+  load_from_last_ckpt: False
+
+model:
+  aggr: sum
+  word_embd_dim: 512
+  embd_dim: 128
+  layer_num: 16
+  particle_num: 100
+  resamp_alpha: 1.0
+  position_size: 640
+  device: 'cuda:1'
+  file: "${root_dir}/${train.exp_folder}/${train.task}-${train.agent}-n${dataset.data_num}-train/trained_model/ParaGon_${dataset.data_num}/last.pt"
+
