@@ -31,7 +31,7 @@ def main(cfg):
     print(os.path.join(data_dir, '{}-train'.format(task)))
     print("loading data")
     dataset = tabletop_gym_obj_dataset(
-        '/home/zirui/paraground/dataset/train_{}_obj_nvisii'.format(cfg['dataset']['data_num']), 
+        '/home/zirui/paraground/dataset', 
         num=cfg['dataset']['data_num'])
     print('loading finish')
     lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', 
