@@ -1,0 +1,84 @@
+seed: 1
+model: 'SPACE'
+resume: true
+resume_ckpt: ''
+parallel: false
+device_ids: [0, 1]
+device: 'cuda:0'
+logdir: './object_detector/output/logs_2'
+checkpointdir: './object_detector/output/checkpoints_2'
+evaldir: './object_detector/output/eval_2/'
+
+dataset: 'CLIPort'
+dataset_roots:
+  CLIPort: '/home/zirui/cliport/data/packing-seen-google-objects-seq-train/rgb/'
+
+
+# For engine.train
+train:
+  batch_size: 12
+  max_epochs: 1000
+  max_steps: 160000
+  print_every: 500
+  save_every: 1000
+  num_workers: 4
+  clip_norm: 1.0
+  max_ckpt: 4
+  eval_on: false
+  eval_every: 1000
+  solver:
+    fg:
+      optim: 'RMSprop'
+      lr: 1e-5
+    bg:
+      optim: 'Adam'
+      lr: 1e-3
+
+# For engine.eval
+eval:
+  checkpoint: 'best'
+  metric: ap_avg
+
+# For package eval
+eval_cfg:
+  train:
+    metrics: ['mse', 'ap']
+    num_samples:
+      mse: 200
+      ap: 200
+    batch_size: 12
+    num_workers: 4
+  test:
+    batch_size: 12
+    num_workers:
+      4
+
+arch:
+  G: 8
+  fg_sigma: 0.27
+
+  z_pres_start_step: 4000
+  z_pres_end_step: 10000
+  z_pres_start_value: 0.1
+  z_pres_end_value: 0.01
+
+  z_scale_mean_start_step: 10000
+  z_scale_mean_end_step: 20000
+  z_scale_mean_start_value: -1.0
+  z_scale_mean_end_value: -2.0
+
+  tau_start_step: 0
+  tau_end_step: 20000
+  tau_start_value: 2.5
+  tau_end_value: 0.5
+
+  fix_alpha_steps: 0
+  fix_alpha_value: 0.1
+
+  K: 1
+  bg_sigma: 0.03
+
+  boundary_loss: true
+  bl_off_step: 100000
+
+

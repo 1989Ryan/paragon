@@ -56,7 +56,7 @@ model:
   aggr: sum
   word_embd_dim: 512
   embd_dim: 128
-  layer_num: 8
+  layer_num: 16
   particle_num: 100
   resamp_alpha: 0.5
   position_size: 640
