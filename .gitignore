@@ -144,7 +144,7 @@ gnn_board/
 .vscode/
 statistics/
 temp/
-dataset/
+./dataset/
 runs/
 model_save/
 ravens/
