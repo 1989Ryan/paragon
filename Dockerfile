@@ -49,6 +49,7 @@ RUN apt-get update && apt-get install -y \
    python3-setuptools \
    && rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install --upgrade setuptools wheel
 
 RUN sudo pip3 install \
    absl-py>=0.7.0  \
@@ -60,18 +61,17 @@ RUN sudo pip3 install \
    scikit-image==0.17.2 \
    transforms3d==0.3.1 \
    tdqm \
-   clip \
    hydra-core==1.0.5 \
    wandb \
    transformers==4.3.2 \
    kornia \
    ftfy \
+   regex \
    timm\
-   ffmpeg \
-   git+https://github.com/openai/CLIP.git\
-   imageio-ffmpeg
+   ffmpeg 
+RUN sudo pip3 install git+https://github.com/openai/CLIP.git
 
 
 # change ownership of everything to our user
-RUN mkdir /home/$USER_NAME/paragon
+RUN mkdir -r /home/$USER_NAME/paragon
 RUN cd /home/$USER_NAME/paragon && echo $(pwd) && chown $USER_NAME:$USER_NAME -R .

@@ -35,7 +35,7 @@ bash scripts/eval.sh
 ### Pre-trained models
 
 ```bash
-bash scripts/pretrain_model.sh
+python scripts/pretrain_model.py
 ```
 
 ## Citation
