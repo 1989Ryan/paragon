@@ -6,6 +6,8 @@ This repository contains the pytorch implementation of the paper: Differentiable
 
 ### Docker
 
+Install [nvidia-docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-on-ubuntu-and-debian)
+
 Build docker container
 ```bash
 python scripts/docker_build.py
