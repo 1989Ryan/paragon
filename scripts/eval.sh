@@ -1,2 +1,2 @@
 export PYTHONPATH="$PWD"
-python paragon/eval.py 
+python3 paragon/eval.py 
