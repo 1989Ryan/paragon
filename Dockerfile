@@ -54,7 +54,7 @@ RUN sudo apt-get install build-essential
 
 RUN sudo pip3 install git+https://github.com/openai/CLIP.git
 RUN sudo pip3 install \
-   gdown==3.13.1 \
+   gdown \
    absl-py>=0.7.0  \
    gym==0.17.3 \
    pybullet>=3.0.4 \
@@ -71,6 +71,7 @@ RUN sudo pip3 install \
    regex \
    timm==0.5.4\
    ffmpeg \
+   
    opencv-python==4.1.2.30 
 RUN sudo pip3 install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.10.2+cu113.html
 RUN sudo pip3 install torch-geometric

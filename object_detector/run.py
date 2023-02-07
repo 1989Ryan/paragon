@@ -1,32 +1,32 @@
-from object_detector import Space, maskrcnn
+from object_detector import maskrcnn
 from object_detector.space.eval.ap import convert_to_boxes
 from object_detector.maskrcnn.mask_rcnn import get_model_instance_segmentation
 import torch
 
-detector = {
-    'space': Space,
-    'maskrcnn': maskrcnn,
-}
+# detector = {
+#     'space': Space,
+#     'maskrcnn': maskrcnn,
+# }
 
-class objDetector():
-    def __init__(self, model_name, device) -> None:
-        self.model = detector[model_name]
-        self.model.to(device)
-        self.device = device
+# class objDetector():
+#     def __init__(self, model_name, device) -> None:
+#         self.model = detector[model_name]
+#         self.model.to(device)
+#         self.device = device
 
-    @torch.no_grad()
-    def run(self, img):
-        boxes_pred = []
-        self.model.eval() 
-        img.to(self.device)
-        loss, log = self.model(img, global_step=10000000000)
-        z_where, z_pres_prob = log['z_shere'], log['z_pres_prob']
-        z_where = z_where.detach().cpu()
-        z_pres_prob = z_pres_prob.detach().cpu().squeeze()
-        z_pres = z_pres_prob > 0.5
-        boxes_batch = convert_to_boxes(z_where, z_pres, z_pres_prob)
-        boxes_pred.extend(boxes_batch)
-        return boxes_pred
+#     @torch.no_grad()
+#     def run(self, img):
+#         boxes_pred = []
+#         self.model.eval() 
+#         img.to(self.device)
+#         loss, log = self.model(img, global_step=10000000000)
+#         z_where, z_pres_prob = log['z_shere'], log['z_pres_prob']
+#         z_where = z_where.detach().cpu()
+#         z_pres_prob = z_pres_prob.detach().cpu().squeeze()
+#         z_pres = z_pres_prob > 0.5
+#         boxes_batch = convert_to_boxes(z_where, z_pres, z_pres_prob)
+#         boxes_pred.extend(boxes_batch)
+#         return boxes_pred
     
 class maskrcnn_obj_detecotr():
     '''mask rcnn object detector'''

@@ -95,8 +95,7 @@ def main(cfg):
     total_num = 0
     succ_num = 0
     repeat = 1
-    obj_detect = maskrcnn_obj_detecotr('/home/zirui/paraground/trained_model/0_9_mask_rcnn.pt')
-    
+    obj_detect = maskrcnn_obj_detecotr('./object_detector/maskrcnn/0_9_mask_rcnn.pt')
     if cfg['dataset']['comp']:
         print('testing tasks: 10 objects with compositional instructions')
     else:
