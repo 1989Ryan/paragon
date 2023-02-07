@@ -27,7 +27,7 @@ You will need to have 269G free space to get all the data.
 python3 scripts/get_dataset.py
 ```
 
-You can also choose to modify the script ``scripts/get_dataset.py`` to download testing data only if you do not have enough space. 
+You can also choose to modify the script ``scripts/get_dataset.py`` to download testing data only (44G) if you do not have enough space. 
 
 ### Download pre-trained model
 
