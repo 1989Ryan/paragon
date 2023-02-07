@@ -21,6 +21,8 @@ python3 scripts/docker_run.py
 
 ### Download dataset
 
+You will need to have 269G free space. 
+
 ```bash
 python3 scripts/get_dataset.py
 ```
