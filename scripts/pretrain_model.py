@@ -1,9 +1,9 @@
 import os
 import gdown
 
-url = 'https://drive.google.com/uc?id=1w8yzqrIf-bTXp6NazQ_o8V-xiJB3tlli'
-output = 'paragon_pretrain.zip'
+url = 'https://drive.google.com/file/d/1biQDBCUVELdYLm1NVydZbocMrJSt2THO/view?usp=sharing'
+output = 'paragon_pretrain.tar.gz'
 
 gdown.download(url, output, quiet=False)
-os.system(f'unzip {output}')
+os.system(f'tar -xvz {output}')
 os.system(f'rm {output}')

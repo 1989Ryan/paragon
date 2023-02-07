@@ -17,11 +17,11 @@ Run docker container
 python scripts/docker_run.py
 ```
 
-### Download dataset
+<!-- ### Download dataset
 
 ```bash
-bash scripts/data.sh
-```
+bash scripts/data.sh -->
+<!-- ``` -->
 
 ### Training
 
@@ -34,11 +34,11 @@ bash scripts/train.sh
 ```bash
 bash scripts/eval.sh
 ```
-### Pre-trained models
+<!-- ### Pre-trained models
 
 ```bash
 python scripts/pretrain_model.py
-```
+``` -->
 
 ## Citation
 
