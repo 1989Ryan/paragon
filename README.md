@@ -4,24 +4,26 @@ This repository contains the pytorch implementation of the paper: Differentiable
 
 ## Quick start
 
+You are highly recommended to use Docker to run the code.  
+
 ### Docker
 
 Install [nvidia-docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-on-ubuntu-and-debian)
 
 Build docker container
 ```bash
-python scripts/docker_build.py
+python3 scripts/docker_build.py
 ```
 Run docker container
 ```bash
-python scripts/docker_run.py
+python3 scripts/docker_run.py
 ```
 
-<!-- ### Download dataset
+### Download dataset
 
 ```bash
-bash scripts/data.sh -->
-<!-- ``` -->
+python3 scripts/get_dataset.py
+```
 
 ### Training
 
@@ -34,11 +36,11 @@ bash scripts/train.sh
 ```bash
 bash scripts/eval.sh
 ```
-<!-- ### Pre-trained models
+### Pre-trained models
 
 ```bash
-python scripts/pretrain_model.py
-``` -->
+python3 scripts/pretrain_model.py
+```
 
 ## Citation
 
