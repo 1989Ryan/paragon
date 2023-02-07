@@ -54,6 +54,7 @@ RUN sudo apt-get install build-essential
 
 RUN sudo pip3 install git+https://github.com/openai/CLIP.git
 RUN sudo pip3 install \
+   gdown==3.13.1 \
    absl-py>=0.7.0  \
    gym==0.17.3 \
    pybullet>=3.0.4 \
