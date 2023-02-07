@@ -25,6 +25,18 @@ python3 scripts/docker_run.py
 python3 scripts/get_dataset.py
 ```
 
+### Download pre-trained model
+
+```bash
+python3 scripts/pretrain_model.py
+```
+
+### Run the pre-trained model
+
+```bash
+bash scripts/run_pretrain.sh
+```
+
 ### Training
 
 ```bash
@@ -36,11 +48,7 @@ bash scripts/train.sh
 ```bash
 bash scripts/eval.sh
 ```
-### Pre-trained models
 
-```bash
-python3 scripts/pretrain_model.py
-```
 
 ## Citation
 
