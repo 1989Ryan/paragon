@@ -1,8 +1,8 @@
-# ParaGon: Differentiable Parsing and Visual Grounding of Human Language Instructions for Object Placement
+# ParaGon: Differentiable Parsing and Visual Grounding of Natural Language Instructions for Object Placement
 
 Project Page: [1989ryan.github.io/projects/paragon.html](https://1989ryan.github.io/projects/paragon.html)
 
-This repository contains the pytorch implementation of the paper: Differentiable Parsing and Visual Grounding of Human Language Instructions for Object Placement. 
+This repository contains the pytorch implementation of the paper: Differentiable Parsing and Visual Grounding of Natural Language Instructions for Object Placement. 
 
 ## Quick start
 
@@ -63,7 +63,7 @@ If you find this work useful in your research, please cite:
 ```
 @InProceedings{zhao2023paragon,
     author    = {Zhao, Zirui and Lee, Wee Sun and Hsu, David},
-    title     = {Differentiable Parsing and Visual Grounding of Human Language Instructions for Object Placement},
+    title     = {Differentiable Parsing and Visual Grounding of Natural Language Instructions for Object Placement},
     booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation},
     year      = {2023}
 }
